@@ -1,8 +1,9 @@
 <?php
 
-class Home extends Base{
+class HomeController extends BaseController{
 	public function Index(){
-		echo "Index method in Home controller";
+		echo "Index method in Home controller <br/>";
+        echo "Pass: " . sha1( '123456' );
 	}
 	
 	public function edit( $id = '' ){
@@ -11,6 +12,8 @@ class Home extends Base{
 		if( $id != '' ){
 			echo "param  : " . $id ;
 		}
+        
+        
 		
 	}
 }
