@@ -75,19 +75,19 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content">
-            <form method="post" action="">
+            <form method="post" action="<?php echo MVC_BASE_URI; ?>/User/Register">
               <h1>Tạo tài khoản</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="register_username" class="form-control" placeholder="Tên đăng nhập" required="" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
+                <input type="password" name="register_pass" class="form-control" placeholder="Mật khẩu" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" name="register_re_pass" class="form-control" placeholder="Nhập lại mật khẩu" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Đăng Ký</a>
+                <button class="btn btn-default submit" type="submit">Đăng Ký</button>
               </div>
 
               <div class="clearfix"></div>

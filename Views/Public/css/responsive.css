@@ -108,7 +108,9 @@ h5, h6          { font-weight: bolder }
     *zoom: 1;  
 }
 
-
+.main-menu li.active a{
+    text-decoration: underline;
+}
 
 
 
@@ -126,7 +128,7 @@ header{
 }
 
 header .logo{
-    margin-top: 40px;
+    margin-top: 30px;
     float: left;
 }
 
@@ -509,7 +511,7 @@ header nav .login_btn:hover{
     border-bottom: 1px solid #f2f1f1;
     border-left: 1px solid #f2f1f1;
     border-right: 1px solid #f2f1f1;
-
+    border-top: 1px solid #f2f1f1;
     transition: all .2s linear;
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
@@ -520,6 +522,7 @@ header nav .login_btn:hover{
     border-bottom: 1px solid #95badf;
     border-left: 1px solid #95badf;
     border-right: 1px solid #95badf;
+    border-top: 1px solid #95badf;
 }
 
 .listings ul li .property_details h1{
@@ -537,11 +540,26 @@ header nav .login_btn:hover{
 }
 
 .listings ul li .property_details h2{
-    color: #9d9d9d;
-    font-family: "lato-regular", Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    color: #2d2d2d;
+    font-size: 15px;
     line-height: 26px;
-    font-weight: normal;
+    font-weight: 700;
+}
+
+p.publish_date,
+p.more-link {
+    padding: 7px 0;
+    color: #9d9d9d;
+}
+
+p.more-link a{
+    color: #4c4b4b;
+}
+p.description{
+    color: #4c4b4b;
+}
+p.description img{
+    padding-top: 15px;
 }
 
 .listings ul li .property_details .property_size{
@@ -581,18 +599,9 @@ header nav .login_btn:hover{
     border: 2px solid #a0c3e5;    
 }
 
-
-
-
-
-
-
-
-
-
 /*  footer  */
 footer{
-    padding-top: 100px;
+    
     background: #95badf;
 }
 
@@ -976,4 +985,8 @@ footer .copyrights a.ph_link{
     footer .footer > ul > li.links{
         border-bottom: 1px solid #82abd4;
     }
+}
+
+.properties_list li:nth-child(3n+1){
+    clear: left;
 }

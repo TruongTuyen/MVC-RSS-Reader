@@ -22,6 +22,8 @@ class HomeController extends BaseController{
             $data['rss_news'] = $this->render_list_post( $id );
         }
         
+        $data['current_id'] = $id;
+        
 		return $this->view( 'Home/Index', $data );
 	}
     
@@ -63,24 +65,31 @@ class HomeController extends BaseController{
                     'title',
                     'link',
                     'description',
-                    'pubDate',
-                    'image'
+                    'pubDate'
                 );
                 
                 foreach( $feed as $rss ){
-                    
+                    $format = '<li><div class="property_details">';
+                    foreach( $rss as $key=>$value ){
+                        if( in_array( $key, $popular_tag ) ){
+                            if( $key == 'title' ){
+                                $format .= '<h2 class="title">'.$value.'</h2>';
+                            }elseif( $key == 'link' ){
+                                $format .= '<p class="more-link"><a href="'.$value.'">Xem tiếp</a></p>';
+                            }elseif( $key == 'description' ){
+                                $format .= '<p class="description">'.$value.'</p>';
+                            }elseif( $key == 'pubDate' ){
+                                $format .= '<p class="publish_date">Ngày đăng: '.date( 'd/m/Y', strtotime( $value ) ).'</p>';
+                            }
+                        }else{
+                            $format .= '<p class="rss_item">'.$value.'</p>';
+                        }
+                    }
+                    $format .= '</div></li>';
+                    $html[] = $format;
                 }
-                /**
-            	for($x=0;$x<$limit;$x++) {
-            		$title = str_replace(' & ', ' &amp; ', $feed[$x]['title']);
-            		$link = $feed[$x]['link'];
-            		$description = $feed[$x]['desc'];
-            		$date = date('l F d, Y', strtotime($feed[$x]['date']));
-            		echo '<p><strong><a href="'.$link.'" title="'.$title.'">'.$title.'</a></strong><br />';
-            		echo '<small><em>Posted on '.$date.'</em></small></p>';
-            		echo '<p>'.$description.'</p>';
-            	}**/
-                return $feed;
+                
+                return $html;
             }else{
                 return '';
             }

@@ -61,4 +61,44 @@ class UserController extends BaseController{
             $this->redirect( 'User', 'Login', $message );
         }
     }
+    
+    public function Register(){
+        if( isset( $_POST['register_username'] ) && isset( $_POST['register_pass'] ) && isset( $_POST['register_re_pass'] ) ){
+            $error = array();
+            
+            $user_name = $this->user_model->escape_data( strip_tags( $_POST['register_username'] ) );
+            $password = $this->user_model->escape_data( strip_tags( $_POST['register_pass'] ) );
+            $repassword = $this->user_model->escape_data( strip_tags( $_POST['register_re_pass'] ) );
+            
+            if( $user_name == '' || $password == '' || $repassword == '' ){
+                $message = 'Vui lòng nhập đủ dữ liệu';
+                return $this->redirect( 'User', 'Login', $message );
+            }else{
+                if( $password == $repassword ){
+                    $table_name = 'user';
+                    $data = array(
+                        'username' => $user_name,
+                        'pword'    => sha1( $password ),
+                        'level'    => 1,
+                        'infos'    => '' 
+                    );
+                    
+                    if( $this->user_model->insert( $table_name, $data ) ){
+                        $message = 'Thêm thành công. Vui lòng đăng nhập';
+                        return $this->redirect( 'User', 'Login', $message );
+                    }else{
+                        $message = 'Không thể thêm dữ liệu';
+                        return $this->redirect( 'User', 'Login', $message );
+                    }
+                    
+                }else{
+                    $message = 'Mật khẩu nhập lại không đúng';
+                    return $this->redirect( 'User', 'Login', $message );
+                }
+            }
+            
+        }else{
+            return $this->redirect( 'User', 'Login' );
+        }
+    }
 }
