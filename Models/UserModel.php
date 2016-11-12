@@ -3,11 +3,6 @@ class UserModel extends MainModel{
     public function __construct(){
         parent::__construct();
         
-        if( $this->conn ){
-            echo "Co connect";
-        }else{
-            echo "khong co connect";
-        }
     }
     
     public function allow_login( $user_name, $password ){

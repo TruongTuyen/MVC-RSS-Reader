@@ -1,6 +1,9 @@
 <?php
 class BaseController{
-	public function view( $view_name ){
+	public function view( $view_name, $data = null ){
+	    if( $data ){
+	       extract( $data );
+	    }
 	    $view_folder = "Views/{$view_name}.php";
         
 	    if( file_exists( $view_folder ) ){
@@ -30,7 +33,7 @@ class BaseController{
         if( isset( $_SESSION['is_user_logged_in'] ) && $_SESSION['is_user_logged_in'] == true ){
             return true;
         }else{
-            return false;
+            $this->redirect( 'User', 'Login' );
         }
     }
 }

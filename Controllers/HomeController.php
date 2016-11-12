@@ -2,8 +2,7 @@
 
 class HomeController extends BaseController{
 	public function Index(){
-		echo "Index method in Home controller <br/>";
-        echo "Pass: " . sha1( '123456' );
+		return $this->view( 'Home/Index' );
 	}
 	
 	public function edit( $id = '' ){

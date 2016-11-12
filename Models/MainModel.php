@@ -8,10 +8,10 @@ class MainModel{
     protected $conn;
     public function __construct(){
         if( !$this->conn ){
-            $this->conn = mysqli_connect( 'localhost', 'root', '', 'mvc_report_project' ) or die( 'Could not connect to DB: '. mysqli_error()  );
+            $this->conn = mysqli_connect( 'localhost', 'root', '', 'mvc_report_project' ) or die( 'Could not connect to DB: '. mysqli_error( $this->conn )  );
         }
         
-        mysqli_query($this->conn, "SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
+        mysqli_query($this->conn, "SET NAMES utf8");
     }
     
     public function insert($table, $data){
@@ -22,7 +22,12 @@ class MainModel{
             $value_list .= ",'".mysqli_escape_string( $this->conn, $value )."'";
         }
         $sql = 'INSERT INTO '.$table. '('.trim($field_list, ',').') VALUES ('.trim($value_list, ',').')';
-        return mysqli_query( $this->conn, $sql );
+        $result = mysqli_query( $this->conn, $sql );
+        if( mysqli_affected_rows( $this->conn ) > 0 ){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public function update($table, $data, $where){
@@ -30,12 +35,24 @@ class MainModel{
             $sql .= "$key = '".mysqli_escape_string( $this->conn, $value )."',";
         }
         $sql = 'UPDATE '.$table. ' SET '.trim( $sql, ','  ).' WHERE '.$where;
-        return mysqli_query( $this->conn, $sql );
+        $result =  mysqli_query( $this->conn, $sql );
+        
+        if( mysqli_affected_rows( $this->conn ) > 0 ){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public function remove($table, $where){
         $sql = "DELETE FROM $table WHERE $where";
-        return mysqli_query($this->conn, $sql);
+        $result = mysqli_query($this->conn, $sql);
+        
+        if( mysqli_affected_rows( $this->conn ) > 0 ){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public function get_list($sql){
