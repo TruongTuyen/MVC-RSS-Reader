@@ -26,7 +26,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo MVC_BASE_URI; ?>/Admin/Index" class="site_title"><i class="fa fa-home"></i> <span>RSS Reader!</span></a>
+              <a href="<?php echo MVC_BASE_URI; ?>" class="site_title"><i class="fa fa-home"></i> <span>RSS Reader!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -37,7 +37,7 @@
                 <img src="<?php echo MVC_BASE_URI; ?>/Views/Public/images/user.png" alt="..." class="img-circle profile_img" />
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Welcome</span>
                 <h2><?php if( isset( $_SESSION['user_name'] ) ){ echo $_SESSION['user_name'] ; } ?></h2>
               </div>
             </div>

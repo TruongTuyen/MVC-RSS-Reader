@@ -51,7 +51,9 @@ class HomeController extends BaseController{
                     if( $count > $limit_item ){ break; }
                     $item = array();
                     foreach( $used_tags as $tag ){
-                        $item[$tag] = $node->getElementsByTagName( $tag )->item(0)->nodeValue;
+                        if( $node->getElementsByTagName( $tag )->length > 0 ){
+                            $item[$tag] = $node->getElementsByTagName( $tag )->item(0)->nodeValue;
+                        }
                     }
                     array_push( $feed, $item );
                     

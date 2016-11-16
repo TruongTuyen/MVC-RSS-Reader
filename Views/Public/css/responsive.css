@@ -560,6 +560,7 @@ p.description{
 }
 p.description img{
     padding-top: 15px;
+    padding-bottom: 10px;
 }
 
 .listings ul li .property_details .property_size{

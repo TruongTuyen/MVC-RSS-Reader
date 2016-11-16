@@ -15,7 +15,7 @@
 	<section class="hero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="<?php echo MVC_BASE_URI;?>/Views/Public/images/rss_logo.png" class="logo" alt="" titl=""/></a>
+				<a href="<?php echo MVC_BASE_URI; ?>/Home/Index"><img src="<?php echo MVC_BASE_URI;?>/Views/Public/images/rss_logo.png" class="logo" alt="" titl=""/></a>
 				<a href="#" class="hamburger"></a>
                 <?php if( isset( $data['menu_list'] ) && !empty( $data['menu_list'] ) ) : ?>
     				<nav class="main-menu">

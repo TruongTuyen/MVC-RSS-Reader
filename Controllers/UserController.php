@@ -54,8 +54,6 @@ class UserController extends BaseController{
                 $this->redirect( 'User', 'Login', $message );
             }
             
-            
-            
         }else{
             $message = "Vui lòng nhập đủ thông tin";
             $this->redirect( 'User', 'Login', $message );

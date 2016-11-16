@@ -31,7 +31,12 @@ class BaseController{
     
     public function check_user_logged_in(){
         if( isset( $_SESSION['is_user_logged_in'] ) && $_SESSION['is_user_logged_in'] == true ){
-            return true;
+            if( isset( $_SESSION['level'] ) && $_SESSION['level']  >= 10 ){
+                return true;
+            }else{
+                return $this->redirect( "Home", "Index" );
+            }
+            
         }else{
             $this->redirect( 'User', 'Login' );
         }
