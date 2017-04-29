@@ -1,0 +1,9 @@
++ Truy cập: https://github.com/TruongTuyen/MVC-RSS-Reader, chọn download ZIP
++ Giải nén file: master.zip, đổi tên thư mục sau giải nén thành: MVC, copy thư mục MVC vào htdocs của Xampp
++ Vào phpmyadmin tạo mới cơ sở dữ liệu tên: mvc_report_project, sau đó import file mvc_report_project.sql vào csdl này.
++ Truy cập đường dẫn: http://localhost/MVC để vào trang chủ
++ Truy cập đường dẫn: http://localhost/MVC/User/Login để vào trang đăng nhập
+	- Sử dụng username: admin
+	- Sử dụng password: 123456
+
++ Đường dẫn trang admin: http://localhost/mvc/Admin/
